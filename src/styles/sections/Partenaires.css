@@ -1,0 +1,116 @@
+.partenaires-section {
+  padding: 36px 0;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden; /* clip the marquee track */
+}
+
+/* ── Title row with lines ──────────────────────────────── */
+.partenaires-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 0 var(--page-padding, 24px);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partenaires-title-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.partenaires-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaa;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* ── Marquee ──────────────────────────────────────────── */
+.partenaires-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade edges */
+.partenaires-marquee-wrapper::before,
+.partenaires-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.partenaires-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+.partenaires-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+}
+
+.partenaires-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+/* Pause on hover */
+.partenaires-marquee-wrapper:hover .partenaires-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); /* shift exactly one copy */ }
+}
+
+/* ── Logo items ─────────────────────────────────────────── */
+.partenaire-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.partenaire-logo:hover {
+  transform: scale(1.05);
+}
+
+.partenaire-logo img {
+  max-width: 130px;
+  max-height: 52px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .partenaires-section {
+    padding: 28px 0;
+  }
+
+  .partenaires-marquee-track {
+    gap: 40px;
+    animation-duration: 20s;
+  }
+
+  .partenaire-logo img {
+    max-width: 90px;
+    max-height: 40px;
+  }
+}

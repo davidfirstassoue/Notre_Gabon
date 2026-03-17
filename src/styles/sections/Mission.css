@@ -1,0 +1,154 @@
+.mission-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+  font-family: 'Inter', 'Montserrat', sans-serif;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.mission-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.mission-description {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.mission-btn {
+  display: inline-block;
+  background-color: #FCD116;
+  color: #000;
+  padding: 14px 28px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0;
+  letter-spacing: 1px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mission-btn:hover {
+  background-color: #e0b800;
+  transform: translateY(-2px);
+}
+
+/* ── Statistics Grid ── */
+.mission-stats-wrapper {
+  background-color: #f7f7f7;
+  padding: 40px 0 0 0; /* Padding top only, bottom is handled by the download bar */
+  border-top: 1px solid #eee;
+  position: relative;
+}
+
+.mission-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 0 40px 40px 40px;
+}
+
+.mission-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-stat-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.mission-stat-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Download Footer ── */
+.mission-download-bar {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  margin: 0 40px;
+  transform: translateY(20px); /* Pull it down slightly to break the container line */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.mission-download-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.mission-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FCD116;
+  color: #000;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+}
+
+.mission-download-btn:hover {
+  background-color: #e0b800;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+  .mission-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-title {
+    font-size: 2rem;
+  }
+  .mission-download-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 0 20px;
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .mission-download-info {
+    font-size: 0.85rem;
+  }
+}
