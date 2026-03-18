@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import '../styles/sections/Actualites.css';
 
@@ -65,18 +66,20 @@ function formatDate(dateStr) {
 function ArticleCard({ article, variant = 'small' }) {
   return (
     <article className={`actu-card actu-card--${variant}`}>
-      <div className="actu-card-img">
-        <img src={article.image_url || 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80'} alt={article.title} />
-        {article.category && <span className="actu-tag">{article.category}</span>}
-      </div>
-      <div className="actu-card-body">
-        {article.category && <span className="actu-tag-mobile">{article.category}</span>}
-        <h3 className="actu-card-title">{article.title}</h3>
-        {variant !== 'stacked' && article.excerpt && (
-          <p className="actu-card-excerpt">{article.excerpt}</p>
-        )}
-        <time className="actu-card-date">{formatDate(article.created_at)}</time>
-      </div>
+      <Link to={`/actualites/${article.id}`} className="actu-card-link">
+        <div className="actu-card-img">
+          <img src={article.image_url || 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80'} alt={article.title} />
+          {article.category && <span className="actu-tag">{article.category}</span>}
+        </div>
+        <div className="actu-card-body">
+          {article.category && <span className="actu-tag-mobile">{article.category}</span>}
+          <h3 className="actu-card-title">{article.title}</h3>
+          {variant !== 'stacked' && article.excerpt && (
+            <p className="actu-card-excerpt">{article.excerpt}</p>
+          )}
+          <time className="actu-card-date">{formatDate(article.created_at)}</time>
+        </div>
+      </Link>
     </article>
   );
 }
@@ -85,16 +88,18 @@ function ArticleCard({ article, variant = 'small' }) {
 function FeaturedArticle({ article }) {
   return (
     <article className="actu-featured">
-      <div className="actu-featured-img">
-        <img src={article.image_url || 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80'} alt={article.title} />
-        {article.category && <span className="actu-tag">{article.category}</span>}
-        <div className="actu-featured-overlay" />
-      </div>
-      <div className="actu-featured-content">
-        {article.category && <span className="actu-tag-mobile">{article.category}</span>}
-        <h2 className="actu-featured-title">{article.title}</h2>
-        <time className="actu-card-date">{formatDate(article.created_at)}</time>
-      </div>
+      <Link to={`/actualites/${article.id}`} className="actu-featured-link">
+        <div className="actu-featured-img">
+          <img src={article.image_url || 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80'} alt={article.title} />
+          {article.category && <span className="actu-tag">{article.category}</span>}
+          <div className="actu-featured-overlay" />
+        </div>
+        <div className="actu-featured-content">
+          {article.category && <span className="actu-tag-mobile">{article.category}</span>}
+          <h2 className="actu-featured-title">{article.title}</h2>
+          <time className="actu-card-date">{formatDate(article.created_at)}</time>
+        </div>
+      </Link>
     </article>
   );
 }
@@ -103,16 +108,18 @@ function FeaturedArticle({ article }) {
 function StackedArticle({ article }) {
   return (
     <article className="actu-stacked">
-      <div className="actu-stacked-img">
-        <img src={article.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'} alt={article.title} />
-        {article.category && <span className="actu-tag actu-tag--small">{article.category}</span>}
-        <div className="actu-stacked-overlay" />
-      </div>
-      <div className="actu-stacked-content">
-        {article.category && <span className="actu-tag-mobile actu-tag-mobile--small">{article.category}</span>}
-        <h3 className="actu-stacked-title">{article.title}</h3>
-        <time className="actu-card-date">{formatDate(article.created_at)}</time>
-      </div>
+      <Link to={`/actualites/${article.id}`} className="actu-stacked-link">
+        <div className="actu-stacked-img">
+          <img src={article.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80'} alt={article.title} />
+          {article.category && <span className="actu-tag actu-tag--small">{article.category}</span>}
+          <div className="actu-stacked-overlay" />
+        </div>
+        <div className="actu-stacked-content">
+          {article.category && <span className="actu-tag-mobile actu-tag-mobile--small">{article.category}</span>}
+          <h3 className="actu-stacked-title">{article.title}</h3>
+          <time className="actu-card-date">{formatDate(article.created_at)}</time>
+        </div>
+      </Link>
     </article>
   );
 }
@@ -164,7 +171,7 @@ function Actualites() {
             <span className="section-tag">Actualités</span>
             <h2 className="section-title">Dernières nouvelles</h2>
           </div>
-          <a href="#" className="actualites-voir-plus">Voir tout →</a>
+          <Link to="/actualites" className="actualites-voir-plus">Voir tout →</Link>
         </div>
 
         {/* ── Grille principale : featured + empilés ── */}

@@ -21,7 +21,7 @@
 .slideshow-track {
   display: flex;
   height: 100%;
-  will-change: transform;
+  /* will-change: transform retiré pour éviter les bugs de capture pleine page mobile */
 }
 
 .slide {
@@ -55,6 +55,12 @@
   height: 60%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 2;
+  
+  /* Fix spécifique pour les captures d'écran mobiles (empêche le gradient de devenir 100% noir) */
+  opacity: 0.99;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
 }
 
 /* Hero Text Content */
@@ -118,4 +124,22 @@
 /* Le clamp() remplace tous les breakpoints de font-size */
 @media (max-width: 480px) {
   .carousel-indicators { bottom: 20px; }
+}
+
+@media (max-width: 768px) {
+  /* Le dégradé sombre devient pur noir lors des captures scrollantes sur certains OS mobiles.
+     On le supprime donc complètement. */
+  .slide .overlay {
+    display: none !important;
+  }
+  
+  /* Pour compenser la perte du fond sombre, on ajoute de très fortes ombres derrière le texte
+     afin qu'il reste lisible peu importe la couleur de l'image de fond. */
+  .hero-content h1 {
+    text-shadow: 0 4px 15px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,1) !important;
+  }
+  .hero-content p {
+    text-shadow: 0 3px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,1) !important;
+    font-weight: 600;
+  }
 }

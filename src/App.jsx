@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Nous from './pages/Nous';
 import Login from './pages/admin/Login';
@@ -7,7 +7,28 @@ import AdminDashboardHome from './pages/admin/AdminDashboardHome';
 import AdminBannieres from './pages/admin/AdminBannieres';
 import AdminArticles from './pages/admin/AdminArticles';
 import AdminPartenaires from './pages/admin/AdminPartenaires';
+import AdminMission from './pages/admin/AdminMission';
+import ActualitesPage from './pages/ActualitesPage';
+import ArticleDetail from './pages/ArticleDetail';
+import Evenements from './pages/Evenements';
+import Benevolat from './pages/Benevolat';
+import Professionnel from './pages/Professionnel';
+import Dialogue from './pages/Dialogue';
+import Media from './pages/Media';
+import Partenariats from './pages/Partenariats';
+import Impact from './pages/Impact';
+import Footer from './components/Footer';
 import './styles/App.css';
+
+// Composant pour afficher le footer conditionnellement
+function FooterWithCondition() {
+  const location = useLocation();
+  // Ne pas afficher sur les pages admin
+  if (location.pathname.startsWith('/admin') || location.pathname === '/login') {
+    return null;
+  }
+  return <Footer />;
+}
 
 function App() {
   return (
@@ -17,18 +38,29 @@ function App() {
           {/* ── Site public ── */}
           <Route path="/" element={<Home />} />
           <Route path="/nous" element={<Nous />} />
+          <Route path="/actualites" element={<ActualitesPage />} />
+          <Route path="/actualites/:id" element={<ArticleDetail />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/evenements" element={<Evenements />} />
+          <Route path="/benevolat" element={<Benevolat />} />
+          <Route path="/professionnel" element={<Professionnel />} />
+          <Route path="/dialogue" element={<Dialogue />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/partenariats" element={<Partenariats />} />
+          <Route path="/impact" element={<Impact />} />
 
           {/* ── Admin (routes imbriquées) ── */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboardHome />} />
             <Route path="bannieres"    element={<AdminBannieres />} />
+            <Route path="mission"      element={<AdminMission />} />
             <Route path="articles"     element={<AdminArticles />} />
             <Route path="partenaires"  element={<AdminPartenaires />} />
             {/* Toute route admin inconnue → tableau de bord */}
             <Route path="*" element={<Navigate to="/admin" replace />} />
           </Route>
         </Routes>
+        <FooterWithCondition />
       </div>
     </Router>
   );

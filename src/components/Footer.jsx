@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; 2026 Notre Gabon ONG. Made with ❤️ for Gabon.</p>
+          <p>&copy; 2026 Notre Gabon ONG.</p>
         </div>
       </div>
     </footer>

@@ -3,18 +3,35 @@ import { NavLink } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 
 function AdminDashboardHome() {
-  const [counts, setCounts] = useState({ slides: 0, articles: 0 });
+  const [counts, setCounts] = useState({ 
+    slides: 0, 
+    articles: 0, 
+    visitors: 0, 
+    donors: 0, 
+    volunteers: 0 
+  });
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const [slidesRes, articlesRes] = await Promise.all([
-        supabase.from('site_content').select('id', { count: 'exact', head: true }).eq('section_key', 'hero'),
-        supabase.from('articles').select('id', { count: 'exact', head: true }),
-      ]);
-      setCounts({
-        slides: slidesRes.count || 0,
-        articles: articlesRes.count || 0,
-      });
+      try {
+        const [slidesRes, articlesRes, visitorsRes, donorsRes, volunteersRes] = await Promise.all([
+          supabase.from('site_content').select('id', { count: 'exact', head: true }).eq('section_key', 'hero'),
+          supabase.from('articles').select('id', { count: 'exact', head: true }),
+          supabase.from('visitors').select('id', { count: 'exact', head: true }),
+          supabase.from('donations').select('id', { count: 'exact', head: true }),
+          supabase.from('volunteers').select('id', { count: 'exact', head: true }),
+        ]);
+
+        setCounts({
+          slides: slidesRes.count || 0,
+          articles: articlesRes.count || 0,
+          visitors: visitorsRes.count || 0,
+          donors: donorsRes.count || 0,
+          volunteers: volunteersRes.count || 0,
+        });
+      } catch (err) {
+        console.error("Erreur lors de la récupération des statistiques:", err);
+      }
     };
     fetchCounts();
   }, []);
@@ -29,19 +46,35 @@ function AdminDashboardHome() {
         </p>
       </div>
 
-      {/* Statistiques */}
+      {/* Statistiques - Ligne 1 */}
       <div className="admin-stats-grid" style={{ marginBottom: '24px' }}>
         <div className="admin-stat-card">
           <div className="admin-stat-value">{counts.slides}</div>
           <div className="admin-stat-label">Bannières Hero</div>
         </div>
-        <div className="admin-stat-card blue">
+        <div className="admin-stat-card yellow">
           <div className="admin-stat-value">{counts.articles}</div>
           <div className="admin-stat-label">Articles publiés</div>
         </div>
-        <div className="admin-stat-card navy">
+        <div className="admin-stat-card blue">
           <div className="admin-stat-value">1</div>
           <div className="admin-stat-label">Administrateur actif</div>
+        </div>
+      </div>
+
+      {/* Statistiques - Ligne 2 (Nouvelles) */}
+      <div className="admin-stats-grid" style={{ marginBottom: '24px' }}>
+        <div className="admin-stat-card">
+          <div className="admin-stat-value">{counts.visitors}</div>
+          <div className="admin-stat-label">Visiteurs du site</div>
+        </div>
+        <div className="admin-stat-card yellow">
+          <div className="admin-stat-value">{counts.donors}</div>
+          <div className="admin-stat-label">Donneurs</div>
+        </div>
+        <div className="admin-stat-card blue">
+          <div className="admin-stat-value">{counts.volunteers}</div>
+          <div className="admin-stat-label">Bénévoles</div>
         </div>
       </div>
 

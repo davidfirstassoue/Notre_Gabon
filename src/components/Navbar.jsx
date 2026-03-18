@@ -7,33 +7,25 @@ const navItems = [
   {
     label: 'Actualités',
     color: '#3AA935',
-    links: ['Événements', 'Bénévolat', 'Professionnel', 'Dialogue', 'Media', 'Sponsoring/Partenariats', 'Impact'],
-  },
-  {
-    label: 'Projet',
-    color: '#FCD116',
-    links: ['Événements', 'Bénévolat', 'Professionnel', 'Dialogue', 'Media', 'Sponsoring/Partenariats', 'Impact'],
-  },
-  {
-    label: 'Éducation',
-    color: '#0072CE',
-    links: ['Cours en Ligne', 'Certifications', 'Formations spécialisées', 'CV & Lettre de motivation', 'Multimédia'],
-  },
-  {
-    label: 'Rapports & Recherches',
-    color: '#3AA935',
-    links: ['Événements', 'Bénévolat', 'Professionnel', 'Dialogue', 'Media', 'Sponsoring/Partenariats', 'Impact'],
+    href: '/actualites',
   },
   {
     label: 'Nous',
     color: '#FCD116',
     href: '/nous',
-    links: ['Événements', 'Bénévolat', 'Professionnel', 'Dialogue', 'Media', 'Sponsoring/Partenariats', 'Impact'],
   },
   {
     label: 'Nous rejoindre',
     color: '#0072CE',
-    links: ['Événements', 'Bénévolat', 'Professionnel', 'Dialogue', 'Media', 'Sponsoring/Partenariats', 'Impact'],
+    links: [
+      { label: 'Événements', href: '/evenements' },
+      { label: 'Bénévolat', href: '/benevolat' },
+      { label: 'Professionnel', href: '/professionnel' },
+      { label: 'Dialogue', href: '/dialogue' },
+      { label: 'Media', href: '/media' },
+      { label: 'Sponsoring/Partenariats', href: '/partenariats' },
+      { label: 'Impact', href: '/impact' },
+    ],
   },
 ];
 
@@ -47,12 +39,14 @@ const Navbar = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    const heroSection = document.querySelector('.hero-section');
     const handleScroll = () => {
       const header = document.getElementById('main-header');
-      if (!heroSection || !header) return;
-      const heroHeight = heroSection.offsetHeight;
-      setScrolled(window.scrollY > heroHeight - header.offsetHeight);
+      if (!header) return;
+      
+      const heroSection = document.querySelector('.hero-section');
+      const threshold = heroSection ? heroSection.offsetHeight - header.offsetHeight : 50;
+      
+      setScrolled(window.scrollY > threshold);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -86,26 +80,34 @@ const Navbar = () => {
   return (
     <header id="main-header" className={`header ${scrolled ? 'scrolled' : ''}`} ref={menuRef}>
       {/* Logo */}
-      <div className="logo-container">
+      <Link to="/" className="logo-container">
         <img src="/logo1sansfond.png" alt="Notre Gabon Logo" className="logo logo-transparent" />
         <img src="/logo2sansfond.png" alt="Notre Gabon Logo" className="logo logo-scrolled" />
-      </div>
+      </Link>
 
       {/* ── DESKTOP : liens visibles directement ── */}
       <nav className="navbar desktop-nav">
         <ul className="nav-links">
           {navItems.map((item, i) => (
-            <li key={i} className="dropdown" style={{ '--dropdown-color': dropdownColors[i % 3] }}>
+            <li key={i} className={item.links ? "dropdown" : ""} style={{ '--dropdown-color': dropdownColors[i % 3] }}>
               {item.href ? (
                 <Link to={item.href}>{item.label}</Link>
               ) : (
                 <a href="#">{item.label}</a>
               )}
-              <ul className="dropdown-content">
-                {item.links.map((link, j) => (
-                  <li key={j}><a href="#">{link}</a></li>
-                ))}
-              </ul>
+              {item.links && (
+                <ul className="dropdown-content">
+                  {item.links.map((link, j) => (
+                    <li key={j}>
+                      {typeof link === 'object' ? (
+                        <Link to={link.href}>{link.label}</Link>
+                      ) : (
+                        <a href="#">{link}</a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -129,24 +131,44 @@ const Navbar = () => {
         <div className="menu-panel-inner">
           {navItems.map((item, i) => (
             <div key={i} className="menu-category">
-              <button
-                className="menu-category-title"
-                style={{ '--cat-color': item.color }}
-                onClick={() => toggleCategory(i)}
-                aria-expanded={openCategory === i}
-              >
-                <span className="cat-dot" style={{ background: item.color }} />
-                {item.label}
-                <ChevronDown size={18} className={`chevron ${openCategory === i ? 'rotated' : ''}`} />
-              </button>
-              <ul className={`menu-links ${openCategory === i ? 'expanded' : ''}`}>
-                {item.href && (
-                  <li><Link to={item.href} onClick={closeMenu} style={{ fontWeight: '700', color: 'var(--navy)' }}>→ Voir la page {item.label}</Link></li>
-                )}
-                {item.links.map((link, j) => (
-                  <li key={j}><a href="#" onClick={closeMenu}>{link}</a></li>
-                ))}
-              </ul>
+              {item.links ? (
+                <>
+                  <button
+                    className="menu-category-title"
+                    style={{ '--cat-color': item.color }}
+                    onClick={() => toggleCategory(i)}
+                    aria-expanded={openCategory === i}
+                  >
+                    <span className="cat-dot" style={{ background: item.color }} />
+                    {item.label}
+                    <ChevronDown size={18} className={`chevron ${openCategory === i ? 'rotated' : ''}`} />
+                  </button>
+                  <ul className={`menu-links ${openCategory === i ? 'expanded' : ''}`}>
+                    {item.href && (
+                      <li><Link to={item.href} onClick={closeMenu} style={{ fontWeight: '700', color: 'var(--navy)' }}>→ Voir la page {item.label}</Link></li>
+                    )}
+                    {item.links.map((link, j) => (
+                      <li key={j}>
+                        {typeof link === 'object' ? (
+                          <Link to={link.href} onClick={closeMenu}>{link.label}</Link>
+                        ) : (
+                          <a href="#" onClick={closeMenu}>{link}</a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <Link
+                  to={item.href}
+                  className="menu-category-title"
+                  style={{ '--cat-color': item.color, textDecoration: 'none' }}
+                  onClick={closeMenu}
+                >
+                  <span className="cat-dot" style={{ background: item.color }} />
+                  {item.label}
+                </Link>
+              )}
             </div>
           ))}
         </div>

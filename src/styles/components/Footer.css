@@ -1,7 +1,7 @@
 .footer {
-  background: var(--bg-dark);
+  background: var(--dark, #070614);
   color: white;
-  padding: 5rem 0 0;
+  padding: 4rem 0 0;
 }
 
 .footer-grid {
@@ -34,7 +34,7 @@
 }
 
 .social-links a:hover {
-  background: var(--primary);
+  background: var(--green, #3AA935);
   transform: translateY(-3px);
 }
 
@@ -53,7 +53,7 @@
   left: 0;
   width: 30px;
   height: 2px;
-  background: var(--primary);
+  background: var(--green, #3AA935);
 }
 
 .footer-links ul li {
@@ -66,7 +66,7 @@
 }
 
 .footer-links ul li a:hover {
-  color: var(--primary);
+  color: var(--green, #3AA935);
   padding-left: 5px;
 }
 

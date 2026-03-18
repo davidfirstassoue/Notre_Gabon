@@ -1,0 +1,84 @@
+.simple-page {
+  padding: 160px 0 100px;
+  min-height: 80vh;
+  background-color: var(--bg-light);
+}
+
+.simple-page-header {
+  margin-bottom: 40px;
+}
+
+/* On utilise var(--green) par défaut pour les sous-titres */
+.simple-page-header .section-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.simple-page-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--dark);
+  margin: 10px 0 20px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.simple-page-divider {
+  width: 60px;
+  height: 5px;
+  background-color: var(--blue);
+}
+
+.simple-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.simple-card {
+  background-color: #fff;
+  padding: 40px;
+  border-left: 6px solid var(--blue);
+  /* Angles à 90° stricts */
+  border-radius: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.simple-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.simple-card p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.simple-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  /* Angles à 90° stricts */
+  border-radius: 0;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.simple-btn:hover {
+  background-color: var(--dark);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,80 @@
+/* src/styles/pages/ActualitesPage.css */
+
+.actualites-page-container {
+  padding-top: var(--header-height); /* Dégagement pour la navbar fixe */
+  min-height: calc(100vh - var(--header-height));
+  background-color: #f5f5f7; /* Couleur de fond de la page d'accueil */
+}
+
+/* ── En-tête de la page (style SimplePage) ── */
+.actu-page-hero {
+  background: #f5f5f7;
+  padding: 60px 0 40px;
+}
+
+.actu-page-tag {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green, #3AA935);
+  margin-bottom: 10px;
+}
+
+.actu-page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--dark, #070614);
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+}
+
+.actu-page-divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--green, #3AA935);
+}
+
+/* ── Contenu ── */
+.actualites-page-content {
+  padding: 80px 0;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* ── Grille Actualités (Identique aux 3 cartes du bas de la page d'accueil) ── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .actu-page-hero {
+    padding: 40px 20px;
+  }
+  
+  .actu-page-title {
+    font-size: 2.2rem;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

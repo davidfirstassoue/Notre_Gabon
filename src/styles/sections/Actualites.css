@@ -160,6 +160,7 @@
 /* ─── Tags ─────────────────────────────────────────────── */
 .actu-tag {
   display: inline-block;
+  width: fit-content;
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -171,11 +172,13 @@
 }
 .actu-tag--small {
   font-size: 0.55rem;
+  width: fit-content;
 }
 
 /* Hidden on desktop, visible on mobile below image */
 .actu-tag-mobile {
   display: none;
+  width: fit-content;
 }
 
 /* ─── Date ─────────────────────────────────────────────── */
@@ -203,6 +206,58 @@
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
+.actu-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.actu-featured-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.actu-stacked-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.actu-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.actu-featured-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.actu-stacked-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
 .actu-card:hover {
   border-left-color: var(--navy, #3331C2);
   transform: translateY(-4px);
@@ -264,180 +319,141 @@
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
+/* ─── Responsive ── */
 @media (max-width: 768px) {
   .actualites-section { padding: 48px 0 56px; }
 
-  /* ── Les 3 premiers articles (1 grand + 2 petits en dessous) ── */
+  /* 1. Bloc du haut : 1 Featured + 2 Stacked côte à côte */
   .actualites-top-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
-  /* Split Layout for Featured */
-  .actu-featured { 
-    height: auto; 
-    border-radius: 0;
+  .actualites-stacked-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les carrés */
+    gap: 12px;
+  }
+
+  /* 2. Bloc du bas : 1 rectangle + 2 carrés */
+  .actualites-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  /* La première carte de la rangée du bas prend toute la largeur (Rectangle) */
+  .actualites-cards-row .actu-card:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Ajustement global des liens pour le mode colonne */
+  .actu-featured-link,
+  .actu-stacked-link,
+  .actu-card-link {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Cartes Vedette (Rectangle) */
+  .actu-featured { 
+    height: auto; 
+    display: block;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
   
   .actu-featured-img {
     position: relative;
-    height: 220px;
+    height: 200px;
     width: 100%;
   }
 
-  .actu-featured-overlay {
-    display: none; /* Remove dark gradient */
+  .actu-featured-overlay,
+  .actu-stacked-overlay {
+    display: none !important; /* Retire le dégradé noir qui bugge sur les captures d'écran mobiles */
   }
 
   .actu-featured-content {
-    position: relative;
-    padding: 16px 20px 24px;
+    padding: 16px 20px;
     background: #fff;
   }
-  
-  .actualites-stacked-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    flex-direction: row;
-  }
-  
-  /* Split Layout for Stacked (the 2 small ones) */
-  .actu-stacked { 
+
+  /* Cartes de type "Carré" (Stacked et Cards en grille) */
+  .actu-stacked, .actu-card { 
     min-height: auto; 
     height: 100%;
-    border-radius: 0;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .actu-stacked-img {
-    position: relative;
-    height: 120px;
-    width: 100%;
-  }
-
-  .actu-stacked-overlay {
-    display: none; /* Remove dark gradient */
-  }
-
-  .actu-stacked-content {
-    position: relative;
-    padding: 12px 14px 16px;
-    background: #fff;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* ── Les 3 articles suivants (1 grand + 2 petits) ── */
-  .actualites-cards-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  /* Split Layout for Cards */
-  .actu-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: auto;
-    height: 100%;
     border: none !important;
-    position: relative;
-    border-radius: 0;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
   }
 
-  /* Make the first card of the second row span full width */
-  .actu-card:first-child {
-    grid-column: 1 / -1;
-  }
-  
-  .actu-card:first-child .actu-card-img {
-    height: 220px;
-  }
-
-  .actu-card-img {
+  .actu-stacked-img, .actu-card-img {
     position: relative;
-    height: 120px;
+    height: 120px; /* Plus petit pour l'aspect carré */
     width: 100%;
-    inset: auto;
   }
 
-  .actu-card-img::after {
-    display: none; /* Remove dark gradient */
-  }
-
-  .actu-card-body {
-    position: relative;
-    padding: 12px 14px 16px;
+  .actu-stacked-content, .actu-card-body {
+    padding: 12px 10px;
     background: #fff;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-  .actu-card:first-child .actu-card-body {
-    padding: 16px 20px 24px;
-  }
-
-  /* Text Colors */
-  .actu-card-title,
-  .actu-stacked-title {
-    color: var(--dark, #070614); /* Dark text on white bg */
-    font-size: 0.85rem;
-    margin-top: 8px; /* Push down from the tag */
-    margin-bottom: auto; /* Push date to bottom */
-    line-height: 1.35;
-  }
-  
-  .actu-card:first-child .actu-card-title,
-  .actu-featured-title {
+  /* Typographie pour les Rectangles */
+  .actu-featured-title,
+  .actualites-cards-row .actu-card:first-child .actu-card-title {
     color: var(--dark, #070614);
-    font-size: 1.2rem;
-    margin-top: 10px;
-    margin-bottom: 8px;
+    font-size: 1.15rem;
+    margin: 8px 0;
+    line-height: 1.3;
   }
 
-  .actu-card-excerpt {
-    display: none;
+  /* Typographie pour les Carrés (Texte plus petit) */
+  .actu-stacked-title,
+  .actu-card-title {
+    color: var(--dark, #070614);
+    font-size: 0.85rem;
+    margin: 6px 0 8px;
+    line-height: 1.4;
   }
 
-  .actu-card-date,
-  .actu-card--small .actu-card-date,
-  .actu-stacked .actu-card-date,
-  .actu-featured-content .actu-card-date {
-    color: #888 !important; /* Grey date on white bg */
-    font-size: 0.7rem;
-    margin-top: 12px;
+  .actu-card-date {
+    color: #888 !important;
+    font-size: 0.65rem;
+    margin-top: auto;
   }
-  
-  /* Tag positioning */
-  .actu-tag {
-    display: none; /* Hide the tag on the image */
-  }
+
+  /* Gestion des Tags mobiles */
+  .actu-tag { display: none; }
 
   .actu-tag-mobile {
     display: inline-block;
     width: fit-content;
+    background: var(--green, #3AA935);
+    color: #fff;
+    padding: 3px 6px;
     font-size: 0.55rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #fff;
-    background: var(--green, #3AA935);
-    padding: 4px 8px;
-    border-radius: 0;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }
+
+  /* --- FIX CAPTURES ECRANS MOBILES ---
+     Les navigateurs mobiles placent ces images dans un calque GPU via
+     transition: transform. Cela rend l'image noire au screenshot. 
+     On désactive sur mobile car il n'y a pas de :hover de toute façon. */
+  .actu-featured-img img,
+  .actu-stacked-img img,
+  .actu-card-img img {
+    transition: none !important;
+    transform: none !important;
+    will-change: auto !important;
   }
 }
 

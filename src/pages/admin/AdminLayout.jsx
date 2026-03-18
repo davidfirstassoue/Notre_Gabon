@@ -6,6 +6,7 @@ import '../../styles/admin.css';
 const PAGE_TITLES = {
   '/admin':             'Tableau de bord',
   '/admin/bannieres':   'Bannière',
+  '/admin/mission':     'Mission & Chiffres',
   '/admin/articles':    'Actualités',
   '/admin/partenaires': 'Partenaires',
 };
@@ -14,6 +15,7 @@ const PAGE_TITLES = {
 const Icons = {
   dashboard: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
   content:   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>,
+  mission:   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
   articles:  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
   partners:  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
   logout:    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>,
@@ -22,6 +24,7 @@ const Icons = {
 const NAV_ITEMS = [
   { to: '/admin',             label: 'Tableau de bord', icon: Icons.dashboard,  end: true },
   { to: '/admin/bannieres',   label: 'Bannière',         icon: Icons.content },
+  { to: '/admin/mission',     label: 'Mission & Chiffres', icon: Icons.mission },
   { to: '/admin/articles',    label: 'Articles',         icon: Icons.articles },
   { to: '/admin/partenaires', label: 'Partenaires',      icon: Icons.partners },
 ];

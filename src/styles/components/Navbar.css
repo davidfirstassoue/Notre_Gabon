@@ -83,7 +83,7 @@
 .navbar .nav-links li a:hover { transform: translateY(-2px); }
 
 /* Couleur hover via variable CSS par item */
-.navbar .nav-links li.dropdown > a:hover {
+.navbar .nav-links li > a:hover {
   color: var(--dropdown-color, #0072CE);
 }
 
