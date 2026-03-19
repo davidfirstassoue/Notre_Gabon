@@ -1,0 +1,262 @@
+/* src/styles/pages/Professionnel.css */
+
+.pro-section {
+  margin-bottom: 60px;
+}
+
+.pro-intro {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark, #070614);
+  margin-bottom: 30px;
+  position: relative;
+  border-bottom: 4px solid var(--green, #3AA935);
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Base Buttons */
+.btn-notre-gabon-square {
+  display: inline-block;
+  background-color: var(--yellow, #FCD116);
+  color: #fff;
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-notre-gabon-square:hover {
+  background-color: #e0b800;
+}
+
+.btn-disabled {
+  background-color: #e0e0e0 !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Grille d'offres dynamiques */
+.pro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.pro-card {
+  background: #fff;
+  border: 1px solid #e1e8f0;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-color: var(--blue, #0072CE);
+}
+
+.pro-card.pourvu {
+  opacity: 0.8;
+  filter: grayscale(100%);
+}
+
+.pro-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pro-type-badge {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  letter-spacing: 0.5px;
+}
+
+.pro-statut-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  background: #eaeaea;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.pro-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.pro-meta {
+  display: flex;
+  align-items: center;
+  color: #777;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.pro-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pro-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  flex: 1;
+  white-space: pre-wrap; /* Preserve line breaks from admin textarea */
+}
+
+.pro-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+
+.pro-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.btn-pro {
+  width: auto;
+  align-self: flex-start;
+}
+
+/* Empty States */
+.pro-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9fbff;
+  border: 1px dashed #c0d1e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pro-empty.error {
+  border: 1px solid #ff4d4f;
+  background: #fff;
+  border-top: 4px solid #ff4d4f;
+}
+
+.pro-empty-icon {
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.pro-empty h3 {
+  color: var(--navy);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.pro-empty p {
+  color: #666;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* bg classes */
+.bg-light-gray {
+  background-color: #f7f9fb;
+}
+
+/* Boîte à outils */
+.outils-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.outil-card {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.outil-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 15px rgba(0, 114, 206, 0.1);
+}
+
+.outil-icon {
+  width: 80px;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outil-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.outil-content h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.outil-content p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.outil-dl-btn {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  background: #f4f8fe;
+  transition: background 0.2s, color 0.2s;
+}
+
+.outil-dl-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}

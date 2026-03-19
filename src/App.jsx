@@ -6,6 +6,11 @@ import AdminLayout from './pages/admin/AdminLayout';
 import AdminDashboardHome from './pages/admin/AdminDashboardHome';
 import AdminBannieres from './pages/admin/AdminBannieres';
 import AdminArticles from './pages/admin/AdminArticles';
+import AdminEvenements from './pages/admin/AdminEvenements';
+import AdminBenevolat from './pages/admin/AdminBenevolat';
+import AdminProfessionnel from './pages/admin/AdminProfessionnel';
+import AdminDialogue from './pages/admin/AdminDialogue';
+import AdminMedia from './pages/admin/AdminMedia';
 import AdminPartenaires from './pages/admin/AdminPartenaires';
 import AdminMission from './pages/admin/AdminMission';
 import ActualitesPage from './pages/ActualitesPage';
@@ -55,6 +60,11 @@ function App() {
             <Route path="bannieres"    element={<AdminBannieres />} />
             <Route path="mission"      element={<AdminMission />} />
             <Route path="articles"     element={<AdminArticles />} />
+            <Route path="evenements"   element={<AdminEvenements />} />
+            <Route path="benevolat"    element={<AdminBenevolat />} />
+            <Route path="professionnel" element={<AdminProfessionnel />} />
+            <Route path="dialogue"     element={<AdminDialogue />} />
+            <Route path="media"        element={<AdminMedia />} />
             <Route path="partenaires"  element={<AdminPartenaires />} />
             {/* Toute route admin inconnue → tableau de bord */}
             <Route path="*" element={<Navigate to="/admin" replace />} />

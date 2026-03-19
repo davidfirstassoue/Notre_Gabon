@@ -1,0 +1,220 @@
+/* src/styles/pages/Benevolat.css */
+
+.benevolat-section {
+  margin-bottom: 60px;
+}
+
+.intro-text p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark, #070614);
+  margin-bottom: 30px;
+  position: relative;
+  border-bottom: 4px solid var(--yellow, #FCD116);
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Grille de missions dynamiques */
+.benevolat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.benevolat-card {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.benevolat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border-color: var(--yellow);
+}
+
+.benevolat-card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.benevolat-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.benevolat-card-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.benevolat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.benevolat-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.benevolat-badge {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.badge-ouvert {
+  background: var(--green);
+  color: #fff;
+}
+
+.badge-complet {
+  background: #eaeaea;
+  color: #888;
+}
+
+.benevolat-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #777;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.benevolat-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.benevolat-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+/* Boutons Carrés stricts (aucun border-radius) */
+.btn-notre-gabon-square {
+  display: inline-block;
+  background-color: var(--yellow, #FCD116);
+  color: #fff;
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 0; /* Respect strict des angles droits */
+  text-align: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-notre-gabon-square:hover {
+  background-color: #e0b800;
+}
+
+.btn-disabled {
+  background-color: #e0e0e0 !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Domaines d'aide (Statique) */
+.domaines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.domaine-card {
+  background: #f9fbff;
+  border: 1px solid #e1e8f0;
+  padding: 30px 24px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.domaine-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue);
+}
+
+.domaine-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.domaine-card h3 {
+  font-size: 1.15rem;
+  color: var(--navy);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.domaine-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Alertes & Empty States */
+.benevolat-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border-top: 4px solid #eaeaea;
+  border: 1px solid #eaeaea;
+}
+
+.benevolat-empty.error {
+  border-top-color: #ff4d4f;
+}
+
+.benevolat-empty h3 {
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.benevolat-empty p {
+  color: #666;
+}
