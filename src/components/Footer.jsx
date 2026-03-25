@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import '../styles/components/Footer.css';
 
@@ -37,8 +38,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <div className="container">
+        <div className="container" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <p>&copy; 2026 Notre Gabon ONG.</p>
+          <Link to="/login" style={{ position: 'absolute', right: '1rem', opacity: 0.2, color: 'inherit', textDecoration: 'none', fontSize: '0.8rem' }} aria-label="Administration">Admin</Link>
         </div>
       </div>
     </footer>
