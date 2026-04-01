@@ -16,6 +16,7 @@ import AdminMission from './pages/admin/AdminMission';
 import ActualitesPage from './pages/ActualitesPage';
 import ArticleDetail from './pages/ArticleDetail';
 import Evenements from './pages/Evenements';
+import EvenementDetail from './pages/EvenementDetail';
 import Benevolat from './pages/Benevolat';
 import Professionnel from './pages/Professionnel';
 import Dialogue from './pages/Dialogue';
@@ -47,6 +48,7 @@ function App() {
           <Route path="/actualites/:id" element={<ArticleDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/evenements" element={<Evenements />} />
+          <Route path="/evenements/:id" element={<EvenementDetail />} />
           <Route path="/benevolat" element={<Benevolat />} />
           <Route path="/professionnel" element={<Professionnel />} />
           <Route path="/dialogue" element={<Dialogue />} />

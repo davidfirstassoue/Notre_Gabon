@@ -28,7 +28,7 @@
 .mission-btn {
   display: inline-block;
   background-color: #FCD116;
-  color: #000;
+  color: #fff;
   padding: 14px 28px;
   font-size: 0.85rem;
   font-weight: 800;
@@ -108,7 +108,7 @@
   align-items: center;
   gap: 8px;
   background-color: #FCD116;
-  color: #000;
+  color: #fff;
   padding: 10px 20px;
   font-size: 0.75rem;
   font-weight: 800;

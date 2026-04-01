@@ -1,0 +1,325 @@
+/* =============================================
+   HomeSections.css - Styles partagés des sections de la page d'accueil
+   ============================================= */
+
+/* --- Layout commun à toutes les sections --- */
+.home-section {
+  padding: 90px 0;
+}
+
+.home-section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+  width: 100%;
+}
+
+.home-section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.home-section-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.home-section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--dark);
+  margin: 8px 0 20px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.home-section-divider {
+  width: 60px;
+  height: 5px;
+  margin: 0 auto;
+  background-color: var(--green);
+}
+
+/* Bouton CTA centré en bas de section */
+.home-section-cta {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.home-cta-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 0.88rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.home-cta-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   Section Événements
+   ============================================= */
+.home-evenements-section {
+  background-color: #f7f9fb;
+}
+
+/* =============================================
+   Section Bénévolat
+   ============================================= */
+.home-benevolat-wrapper {
+  background-color: var(--navy, #3331C2);
+  padding: 0;
+  overflow: hidden;
+}
+
+.home-benevolat-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 480px;
+  max-width: 100%;
+}
+
+/* Colonne gauche : texte blanc sur bleu marine */
+.home-benevolat-left {
+  flex: 1.2;
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.home-benevolat-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.home-benevolat-tag {
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.home-benevolat-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+
+.home-benevolat-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 16px;
+}
+
+.home-benevolat-cta-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 15px 30px;
+  background: #fff;
+  color: var(--navy, #3331C2);
+  font-size: 0.88rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  width: fit-content;
+}
+
+.home-benevolat-cta-btn:hover {
+  background: var(--dark, #070614);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Colonne droite : carte mission */
+.home-benevolat-right {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+}
+
+.home-benevolat-card {
+  background: #fff;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+
+.home-benevolat-card:hover {
+  transform: translateY(-4px);
+}
+
+.home-benevolat-card-placeholder {
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  padding: 30px;
+}
+
+/* Bouton "Je suis partant" sur la carte mission */
+.btn-mission-partant {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  background: var(--navy, #3331C2);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: auto;
+}
+
+.btn-mission-partant:hover {
+  background: var(--dark, #070614);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.btn-mission-partant.btn-disabled {
+  background: #e0e0e0 !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* =============================================
+   Section Mentorat
+   ============================================= */
+.home-mentorat-section {
+  background-color: #fff;
+}
+
+.home-mentorat-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+  background: #f7f9fb;
+  padding: 50px 40px;
+  margin-bottom: 10px;
+}
+
+.home-mentorat-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.home-mentorat-logo {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.home-mentorat-logo img {
+  width: 100%;
+  max-width: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 15px rgba(0,0,0,0.08));
+  transition: transform 0.3s;
+}
+
+.home-mentorat-logo img:hover {
+  transform: scale(1.04);
+}
+
+/* =============================================
+   Section Média
+   ============================================= */
+.home-media-section {
+  background-color: #f0f4f8;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 900px) {
+  .home-benevolat-inner {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .home-benevolat-left {
+    padding: 50px 30px;
+  }
+
+  .home-benevolat-right {
+    width: 100%;
+    padding: 30px 24px 50px;
+  }
+
+  .home-mentorat-body {
+    flex-direction: column;
+    padding: 35px 24px;
+    gap: 30px;
+  }
+
+  .home-mentorat-logo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-section {
+    padding: 60px 0;
+  }
+
+  .home-benevolat-left {
+    padding: 40px 20px;
+  }
+
+  .home-benevolat-right {
+    padding: 20px;
+  }
+}

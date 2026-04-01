@@ -10,6 +10,14 @@ function Media() {
   const [loading, setLoading] = useState(true);
   const [dbError, setDbError] = useState(false);
 
+  // Helper YouTube
+  const getYoutubeThumbnail = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? `https://img.youtube.com/vi/${match[2]}/maxresdefault.jpg` : null;
+  };
+
   // Teasers
   const [plateformes, setPlateformes] = useState([]);
   const [loadingPlates, setLoadingPlates] = useState(true);
@@ -133,9 +141,9 @@ function Media() {
             {/* 3. NOS PLATEFORMES (Teasers YouTube & Insta) */}
             <section className="media-section bg-light-gray" style={{ padding: '50px 0' }}>
                <div style={{ padding: '0 30px' }}>
-                <h2 className="section-title" style={{ borderBottomColor: 'var(--red, #e52d27)' }}>Nos autres plateformes</h2>
+                <h2 className="section-title" style={{ borderBottomColor: 'var(--red, #e52d27)' }}>Notre Gabon 24</h2>
                 <p style={{ fontSize: '1.1rem', marginBottom: '30px', color: '#555' }}>
-                  Abonnez-vous à nos chaînes pour revivre nos événements de l'intérieur et suivre nos reportages.
+                  Retrouvez nos derniers reportages, interviews et actualités en vidéo. Cliquez sur un extrait pour le visionner directement sur YouTube.
                 </p>
 
                 <div className="teasers-grid">
@@ -145,10 +153,14 @@ function Media() {
                   ) : plateformes.length === 0 ? (
                      <p style={{ textAlign: 'center', width: '100%', color: '#999', fontStyle: 'italic' }}>Aucune plateforme configurée.</p>
                   ) : (
-                    plateformes.map((pf) => {
+                    plateformes.slice(0, 3).map((pf) => {
                       const isIg = pf.type_plateforme === 'Instagram';
-                      const defaultImg = isIg ? 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' : 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-                      const bgImg = pf.image_fond ? pf.image_fond : defaultImg;
+                      const ytThumb = getYoutubeThumbnail(pf.lien_url);
+                      // On priorise la miniature auto YouTube, puis l'image en DB, puis une image par défaut
+                      let defaultImg = 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=800';
+                      if (isIg) defaultImg = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800';
+                      
+                      const bgImg = ytThumb || pf.image_fond || defaultImg;
 
                       return (
                         <div className="teaser-card" key={pf.id}>
@@ -163,7 +175,7 @@ function Media() {
                             <h3 style={{ borderLeft: `4px solid ${isIg ? '#E1306C' : '#FF0000'}`, paddingLeft: '10px' }}>{pf.titre}</h3>
                             <p>{pf.description}</p>
                             <a href={pf.lien_url} target="_blank" rel="noopener noreferrer" className={`teaser-link ${isIg ? 'instagram-link' : 'youtube-link'}`}>
-                              {isIg ? "Rejoindre sur Instagram" : "Visiter la plateforme"} <ExternalLink size={16} />
+                              Voir la vidéo <ExternalLink size={16} />
                             </a>
                           </div>
                         </div>

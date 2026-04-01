@@ -67,16 +67,23 @@
 
 .navbar .nav-links {
   display: flex;
+  gap: 15px; /* Réduit pour 9 items */
   list-style: none;
-  gap: 40px;
+}
+
+.navbar .nav-links li {
+  display: inline-block;
 }
 
 .navbar .nav-links li a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 16.8px;
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 5px 0;
   display: inline-block;
 }
 
@@ -124,12 +131,12 @@
 
 .navbar .nav-links li.dropdown:hover .dropdown-content { display: block; }
 
-/* Desktop responsive intermédiaire */
-@media (max-width: 1100px) {
-  .header { padding: 20px 30px; }
-  .header.scrolled { padding: 10px 30px; }
-  .navbar .nav-links { gap: 22px; }
-  .navbar .nav-links li a { font-size: 0.92rem; }
+/* Desktop responsive intermédiaire (Plein de liens) */
+@media (max-width: 1200px) {
+  .header { padding: 20px; }
+  .header.scrolled { padding: 10px 20px; }
+  .navbar .nav-links { gap: 10px; }
+  .navbar .nav-links li a { font-size: 0.8rem; letter-spacing: 0; }
 }
 
 /* ═══════════════════════════════════════════════════

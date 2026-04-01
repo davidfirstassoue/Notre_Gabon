@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { supabase } from '../supabaseClient';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
@@ -56,18 +57,20 @@ function Evenements() {
 
     return (
       <div className="event-card">
-        <div className="event-image">
-          {event.image_url ? (
-            <img src={event.image_url} alt={event.titre} />
-          ) : (
-            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e0e0e0', color: '#888' }}>
-              <Calendar size={48} />
+        <Link to={`/evenements/${event.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div className="event-image">
+            {event.image_url ? (
+              <img src={event.image_url} alt={event.titre} />
+            ) : (
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e0e0e0', color: '#888' }}>
+                <Calendar size={48} />
+              </div>
+            )}
+            <div className={`event-badge ${event.est_passe ? 'passe' : ''}`}>
+              {event.est_passe ? 'Passé' : 'À venir'}
             </div>
-          )}
-          <div className={`event-badge ${event.est_passe ? 'passe' : ''}`}>
-            {event.est_passe ? 'Passé' : 'À venir'}
           </div>
-        </div>
+        </Link>
         
         <div className="event-content">
           <div className="event-date-lieu">
@@ -81,7 +84,9 @@ function Evenements() {
             )}
           </div>
           
-          <h3>{event.titre}</h3>
+          <Link to={`/evenements/${event.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h3>{event.titre}</h3>
+          </Link>
           
           {event.description && (
             <p>{event.description}</p>

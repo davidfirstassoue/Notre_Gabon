@@ -4,28 +4,20 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import '../styles/components/Navbar.css';
 
 const navItems = [
-  {
-    label: 'Actualités',
-    color: '#3AA935',
-    href: '/actualites',
-  },
-  {
-    label: 'Nous',
-    color: '#FCD116',
-    href: '/nous',
-  },
-  {
-    label: 'Nous rejoindre',
-    color: '#0072CE',
+  { label: 'Actualités', color: '#3AA935', href: '/actualites' },
+  { label: 'Événements', color: '#FCD116', href: '/evenements' },
+  { label: 'Bénévolat', color: '#0072CE', href: '/benevolat' },
+  { label: 'Professionnel', color: '#3AA935', href: '/professionnel' },
+  { label: 'Dialogue', color: '#FCD116', href: '/dialogue' },
+  { label: 'Media', color: '#0072CE', href: '/media' },
+  { 
+    label: 'Nous', 
+    color: '#3AA935', 
+    href: '/nous', 
     links: [
-      { label: 'Événements', href: '/evenements' },
-      { label: 'Bénévolat', href: '/benevolat' },
-      { label: 'Professionnel', href: '/professionnel' },
-      { label: 'Dialogue', href: '/dialogue' },
-      { label: 'Media', href: '/media' },
-      { label: 'Sponsoring/Partenariats', href: '/partenariats' },
-      { label: 'Impact', href: '/impact' },
-    ],
+      { label: 'Partenariats', href: '/partenariats' },
+      { label: 'Impact', href: '/impact' }
+    ]
   },
 ];
 
@@ -89,7 +81,7 @@ const Navbar = () => {
       <nav className="navbar desktop-nav">
         <ul className="nav-links">
           {navItems.map((item, i) => (
-            <li key={i} className={item.links ? "dropdown" : ""} style={{ '--dropdown-color': dropdownColors[i % 3] }}>
+            <li key={i} className={item.links ? "dropdown" : ""} style={{ '--dropdown-color': item.color }}>
               {item.href ? (
                 <Link to={item.href}>{item.label}</Link>
               ) : (
@@ -161,8 +153,8 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={item.href}
-                  className="menu-category-title"
-                  style={{ '--cat-color': item.color, textDecoration: 'none' }}
+                  className="menu-category-title no-links"
+                  style={{ '--cat-color': item.color }}
                   onClick={closeMenu}
                 >
                   <span className="cat-dot" style={{ background: item.color }} />
